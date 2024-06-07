@@ -254,8 +254,7 @@ def send_message():
     # Get the AI assistant's response
     model_response = convo.last.text
     print(model_response)
-    text = text.replace('#', '').replace('*', '').replace('###', '')
-    print(model_response)
+
     
     # Append the bot's response to the conversation history
     conversation_history.append({"role": "model", "parts": [model_response]})
@@ -693,10 +692,6 @@ i want you to automatically generate yourself the whole such conversation the us
     # Get the AI assistant's response
     model_response = convo.last.text
     print(model_response)
-    
-    # Append the bot's response to the conversation history
-    
-    
     # Return the response to the client
     return jsonify({'message': model_response})
 
