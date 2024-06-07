@@ -1,0 +1,58 @@
+{% extends "profilebase.html" %}
+{% block title %}Contact Us{% endblock title %}
+{% block body %}
+<img src="{{url_for("static",filename="thunder.png")}}" alt="thunder" style="width: 70%; height: 90%; margin-left: 25%; margin-bottom: -80%;">
+<center><h6 class="display-6">
+    Contact Us
+</h6>
+<h6 >Get in Touch</h6></center>
+<center>
+    <b><p class="lead" style="font-size: medium;">Have a question, comment, or suggestion? <br>
+    We'd love to hear from you! Please feel free to reach out to us using the contact information below or by filling out the contact form. <br>
+    Our team is here to assist you and will respond to your inquiry as soon as possible.
+    </p></b>
+    <div class="container">
+
+        <h5>Contact Information:</h5>
+        
+        <b>Address: </b>Main Street, Bangalore,
+                         Karnataka, India. <br>
+          
+          
+        <b>Phone:</b>+1 (555) 123-4567 <br>
+          
+          
+         <b>Email:</b> info@VisonAi.com <br>
+
+    </div><br>
+    <div class="container"> 
+        <h5>Connect With Us:</h5>
+        
+        <p class="lead" style="font-size: medium;"><b>Stay connected with us on social media for updates, news, and more: </b></p>
+        
+        <b>Facebook: </b>[https://www.facebook.com/VisonAI] <br>
+        <b>Twitter: </b>[https://twitter.com/VisonAI] <br>
+        <b>LinkedIn: </b>[https://www.linkedin.com/company/VisonAI] <br>
+        <b>Instagram:</b> [https://www.instagram.com/VisonAI] <br> <br>
+        
+        <h5><b>Contact Form:</b></h5> 
+        
+        <p class="lead" style="font-size: medium;">Fill out the form below to send us a message. We'll get back to you as soon as possible! </p>
+        <form  class="border border-white" style=" width: 70%;
+        align-items: center;background-color: #d9d9d9; border-radius: 100px; padding: 2%;">
+            <h5><b>Fill Out This</b></h5>
+            <input type="text" placeholder="User ID" style="border-radius: 100px;
+            margin: 0.5%;"><br>
+            <input type="text" placeholder="Email ID" style="border-radius: 100px;
+            margin: 0.5%;"><br>
+            <textarea  name="message" id="" cols="50" rows="5" placeholder="Message" style="text-align: center; border-radius: 100px;
+            margin: 0.5%;"></textarea><br>
+            <button type="submit" style="background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white; border-radius: 20px; width: 100px; height: 35px;">Submit</button>
+        </form>
+        
+      <p class="lead" style="font-size: large; margin-top: 6%;"><b>Thank you for reaching out to us! <br>
+        We appreciate your interest in Vison AI and look forward to assisting you.</b></p>  
+    </div>  
+</center>
+
+{% endblock body %}

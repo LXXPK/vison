@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Chatbot</title>
+    <style>
+        #chat-history {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .user-message {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .chatbot-message {
+            background-color: #d0f0c0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat with the Basic Bot</h1>
+    <div id="chat-history"></div>
+    <input type="text" id="user-input" style="width: 60%;">
+    <button onclick="sendMessage()">Send Message</button>
+
+    <script>
+    function appendMessage(messageType, messageContent) {
+        const chatHistory = document.getElementById("chat-history");
+        const messageElement = document.createElement("div");
+
+        if (messageType === "user") {
+            messageElement.classList.add("user-message");
+        } else if (messageType === "chatbot") {
+            messageElement.classList.add("chatbot-message");
+        } else {
+            console.error("Invalid message type:", messageType);
+            return;
+        }
+
+        messageElement.textContent = messageContent;
+        chatHistory.appendChild(messageElement);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    function sendMessage() {
+        const userInput = document.getElementById("user-input").value;
+
+        fetch('/chat', {
+            method: 'POST',
+            body: userInput
+        })
+        .then(response => response.json())
+        .then(data => {
+            appendMessage("user", userInput);
+            appendMessage("chatbot", data.response);
+            document.getElementById("user-input").value = "";
+        })
+        .catch(error => console.error(error));
+    }
+    </script>
+</body>
+</html>

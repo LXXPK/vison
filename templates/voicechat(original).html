@@ -1,0 +1,67 @@
+{% extends "profilebase.html" %}
+{% block title %}voicechat{% endblock title %}
+{% block body %}
+<style>
+    .toggle-button {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle-button.active {
+  background: #4CAF50; /* Change to your desired "on" color */
+  color: white;
+}
+.box input{
+    position: absolute;
+}
+
+</style>
+<center>
+<div class="chatbox" style="margin-top: 8%; margin-bottom: 4%;">
+    <input type="text" style="border: none; background-color: #cfc8c8; opacity: 0.5;width: 65%; text-align:left ;
+    height: 2.5rem; border-radius: 100px; margin-bottom:18% ; margin-left: 10%; " placeholder="Any question any time " ><br>
+    <a href="/voicearticulate">
+        
+        <img src="{{ url_for('static', filename='arrow.png') }}" class="img-fluid" alt="arrow" style="width: 2%;height: 3%; margin-left: -90%; margin-top: -55%;"></a>
+       
+    <div class="box " style="background-color: #635858; width: 70rem; height: 34rem; border-radius: 100px;">
+       
+        <div class="minibox border border-black"  style="background-color: #d9d9d9;border-radius: 100px 0 0 100px;width: 9rem; height: 34rem;  border-radius: 100px 0 0 100px; margin-top: -30%; margin-left: -88.5%;"></div> 
+        <a href=""><div  style=" margin-top: -45%; margin-left: -87%; "><h3><i class="fa-solid fa-bars"></i></h3></div> </a>
+       <a href=""><div  style=" margin-top: 34%;margin-left: -87%;" > <h3><i class="fa-solid fa-gear"></i></h3></div></a>
+      
+        <a href=""><img src="{{ url_for('static', filename='mic.png') }}" class="img-fluid" alt="arrow" style="width: 15%;height:29%; margin-top: -3.5%;"></a>
+        <div class="messages border border-white" style="width: 80%; height: 75%; margin-top: -48%; margin-left: 9%;">
+           
+        </div>
+    </div>
+    <div class="selection" style="  margin-top:8%;">
+    <a href="/login" type="button" class="btn btn-outline-success" type="submit" style="margin-bottom: 3%;background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white; border-radius: 20px; width: 200px; height: 40px; "><b>Start Learning</b></a><br>
+
+    <h5>Switch to quiz mode for interactive learning.</h5><br>
+    <h5 style="font-size: 350;"><b>Quiz Mode</b></h5>
+    <button class="toggle-button" style=" border-radius: 100px;">Quiz Mode</button><br><br>
+
+    <h6 style="margin-top: 1%;">Upload your document for a personalized explanation.</h6><br>
+    <a href="/upload" type="button" class="btn btn-outline-success" type="submit" style="background: linear-gradient(90deg, #70998f 30.5%, #253330);
+        border: 1px solid black;color: white; border-radius: 20px; width: 200px; height: 40px; ;"><b>Upload</b></a>
+        <br><img src="{{ url_for('static', filename='upload.png') }}" class="img-fluid" alt="microphone" style="width: 2.5%;height: 3.6%;   margin-top: -29.2%; margin-bottom:-24%; margin-left: -110; margin-right: 10%;">
+    </div>
+</div>
+
+</center>
+<script>const toggleButton = document.querySelector('.toggle-button');
+
+    toggleButton.addEventListener('click', function() {
+      this.classList.toggle('active'); // Toggle "active" class on button click
+    });
+    </script>
+{% endblock body %}
+
+
+
+
+ 

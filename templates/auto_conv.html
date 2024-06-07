@@ -1,0 +1,93 @@
+{% extends "profilebase.html" %}
+{% block title %}Auto Conversation{% endblock title %}
+{% block body %}
+    <center>
+        <div class="container">
+            <h1 class="display-3"> <b> Auto Articulate</b></h1>
+            <input type="text" id="userInput" placeholder="Enter your question or topic" style="margin: 2%; width: 50%; height: 2.5rem; border-radius: 20px; " >
+            <div id="messageContainer" class="conversation" style="width: 50%; height: 70%;"></div>
+            <button type="button" id="generateButton" class="btn btn-outline-success">Generate</button>
+            <button type="button" id="downloadTextButton" class="btn btn-outline-primary" style="display: none; margin: 2%;">Download Text</button>
+            
+            <button type="button" id="downloadAudioButton" class="btn btn-outline-primary" style="display: none;margin: 1%  ;">Download Audio</button>
+        </div>
+    </center>
+    <script>
+        const userInput = document.getElementById('userInput');
+        const generateButton = document.getElementById('generateButton');
+        const messageContainer = document.getElementById('messageContainer');
+        const downloadTextButton = document.getElementById('downloadTextButton');
+        const downloadAudioButton = document.getElementById('downloadAudioButton');
+
+        generateButton.addEventListener('click', function() {
+            const messageText = userInput.value.trim();
+            if (messageText !== '') {
+                sendMessageToBackend(messageText);
+            }
+        });
+
+        function sendMessageToBackend(message) {
+            fetch('/generate_response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                appendMessage(data.message);
+                downloadTextButton.style.display = 'block';
+                downloadAudioButton.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function appendMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messageContainer.appendChild(messageElement);
+        }
+
+        downloadTextButton.addEventListener('click', function() {
+            const textToDownload = messageContainer.innerText;
+            download('auto_conver_response.txt', textToDownload);
+        });
+
+        downloadAudioButton.addEventListener('click', function() {
+            const textToConvert = messageContainer.innerText;
+            fetch('/convert_to_audio', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: textToConvert })
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'auto_conver_response.mp3';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+        function download(filename, text) {
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
+{% endblock body %}

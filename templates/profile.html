@@ -1,0 +1,35 @@
+{% extends "profilebase.html" %}
+
+{% block title %} 
+Profile
+{% endblock title %} 
+
+{% block body %}
+<style>
+.profilebg{
+  opacity: 0.2;
+  z-index: -1;
+}
+</style>
+<img  class="profilebg" src="{{url_for("static",filename="profilebg.png")}}" alt="bg of profile" style="margin-left: 28%; width: 50%;height:38%;margin-bottom: -40%;">
+<div class="container" style="background-color:rgba(196, 169, 169, 0.5); border-radius: 100px; width: 40%; height: 50%;opacity: 1;">
+<form >
+    <center>
+    <img src="{{ url_for('static', filename='user_icon.png') }}" class="rounded-circle m-5" alt="Cinque Terre" style="width: 20%; height: 30%;">
+    <div >
+        <input type="Name" class="form-control"  value="{{username}}"   style="width: 60%;" disabled >
+        
+      </div>
+      <br>
+      <div >
+        <input type="text" class="form-control" value="{{email}}" style="width: 60%;" disabled>
+        
+      </div>
+      <a href="/logout" type="button" class="btn btn-primary m-3"> Logout</a>
+</center>
+</form>
+
+</div> 
+<img src="{{url_for('static',filename="propsrewardwitharibbon-2@2x.png")}}" alt="badge" style="width: 10%; height: 20%;margin-left: 62%;margin-top: -6%;margin-bottom: 2%;">
+
+{% endblock body %}

@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+<style>
+.welcome h4{
+    font:2rem;
+}
+.welcome p{
+    font:1rem;
+}
+.index_ball{
+  z-index: -1;
+  opacity: 0.34;
+}
+</style>
+
+<center><img src="{{ url_for('static', filename='maindesign.png') }}" class="img-fluid" alt="maindesign" style="width: 85%;height: 60%; margin-left: 5%;"></center><br>
+
+
+
+<center><div class="welcome m-4" sty><h3 class="display-5" style="font-weight:350;"><b >Welcome to VISON AI*</b></h3><br>
+<p  style="font-size: medium;" class="lead "  style="text-align: justify; font-size: medium;"><b><i>where education meets innovation. Experience a new era of
+    learning with our transformative <br> platform designed to make education accessible, engaging, and
+    effective for all.
+  </i></b></p></div></center>
+
+<!-- --------------------part1------------------------ -->
+  <div class="d-flex" style="margin: 10%; margin-bottom: 3%; margin-top: 5%;">
+  <div class="p-2 w-100"><h5 style="text-align: justify; "><b>Experience the Difference</b></h3><p class="lead "  style="font-size: medium;"><b>Discover how VISON AI revolutionizes education by simplifying complex
+    concepts, providing personalized guidance, and fostering engagement
+    for learners of all backgrounds.</b></p><a href="/login" type="button" class="btn btn-outline-success" type="submit" style="background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white; border-radius: 20px; width: 200px; height: 40px; margin-left: 70%;"><b>Get started </b></a></div>
+  <div class="pl-2 flex-shrink-1"><img src="{{ url_for('static', filename='index1stgirl.png') }}" class="rounded float-end"  style="margin: 3%;margin-left: 5%; width: 70%;height: 90%;"  alt="index1stgirl"></div>
+  
+</div>
+<center>
+
+
+
+<h4  class="display-6" style="font-weight:350;"><b>Innovative Features</b></h5></center>
+<!-- -----------------------part2---------------------- -->
+  
+  
+</div>
+<div class="d-flex" style="margin: 10%;margin-bottom: 5%; margin-top: 2%;">
+    <div class=" flex-shrink-1" style="margin-left:7% ;">
+      <img src="{{ url_for('static', filename='boyraisinghand.png') }}" class="rounded float-left" style="margin: 3%; width: 45%; height: 85%;" alt="index1stgirl">
+    </div>
+  
+    <div class="flex-grow-1 ms-2 " style="margin-top: 5%; ">
+        <h5 ><b>Concept to Life</b></h3><ul class="lead " style="font-size: medium;" >
+        <b><li >
+              Transform intricate concepts into visually appealing
+              content.
+            </li>
+            <li >
+              Simplify complex ideas for deeper understanding and engagement.
+            </li></b>
+          </ul>
+          <a href="/concepttolife" type="button" class="btn btn-outline-success" type="submit" style="background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white; border-radius: 20px; width: 200px; height: 40px; margin-left: 65%;"><b>Explore Now</b></a>
+    </div>
+  </div>
+  
+<!-- --------------------------part3------------------ -->
+<div class="d-flex" style="margin-left: 10%; margin-right:10%; margin-top: -3%;">
+   
+  <div class="p-2 w-100"><h5><b>Voice Articulate</b></h3><ul class="lead " style="font-size: medium; "  >
+    <b><li >
+        Provides personalized audio explanations for enhanced
+        comprehension.
+    </li>
+    <li >
+        Tailored guidance to cater to individual learning styles
+        and preferences.
+    </li></b>
+  </ul>
+  <a href="/voicearticulate" type="button" class="btn btn-outline-success" type="submit" style="background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white; border-radius: 20px; width: 200px; height: 40px; margin-left: 70%; margin-top: 10%;"><b>Explore Now</b></a>
+</div>
+<div class="pl-2 flex-shrink-1 " style="margin-right:5%;"><img src="{{ url_for('static', filename='index3.png') }}" class="rounded float-end"  style="margin-left: 5%; width: 65%;height: 90%; "  alt="index1stgirl"></div>
+  
+</div>
+</div>
+<img class="index_ball" src="{{url_for('static',filename='index_ball.png')}}" alt="index_ball" style="width: 43%;height: 43%;margin-top: -125%;margin-left: -20%;">
+
+<img class="index_ball" src="{{url_for('static',filename='index_ball.png')}}" alt="index_ball" style="width: 40%;height: 40%;margin-left: 65%;margin-top: -5%;">
+
+<img class="index_ball" src="{{url_for('static',filename='index_ball.png')}}" alt="index_ball" style="width: 40%;height: 40%; margin-left: 5%;margin-top: 17%;">
+{% endblock body %}

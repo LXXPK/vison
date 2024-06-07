@@ -1,0 +1,207 @@
+{% extends "profilebase.html" %}
+{% block title %}Video{% endblock title %}
+{% block body %}
+<style>
+   /* Style for user messages */
+   .user-message {
+       width: 60%;
+       margin-left: 0%;
+        background-color: #9796a0;
+        border-width: 5px;
+        border-color: black;
+        color: black;
+        text-align: left;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        
+    }
+
+    /* Style for bot messages */
+    /* Style for bot messages */
+.bot-message {
+    background-color: #66ca84;
+    color: black;
+    text-align: right;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+    margin-left: auto; /* Align to right */
+    margin-right: 0; /* Reset margin-right */
+}
+
+    #messageContainer {
+         /* Set maximum height for message container */
+        overflow-y: auto; /* Enable vertical scrolling */
+        padding: 0.5%; /* Add padding for better appearance */
+    }
+</style>
+<div class="container">
+    <div class="videoblock">
+    <video width="100%" height="100%" controls>
+        <source src="{{ url_for('static', filename='finalvideo.mp4') }}" type="video/mp4" >
+
+        
+      </video>
+      <!-- add  download button  -->
+      <button id="downloadButton" style="margin-left: 80%; margin-top: 3%; background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white; border-radius: 20px; width: 170px; height: 40px;">Download</button>
+
+
+      <!-- <button style="margin-left: 80%;margin-top: 3%; background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white;border-radius: 20px; width: 170px; height: 40px;">Download </button> -->
+      </div>
+      <div class="notes" style="margin: 5%; margin-top: 10%;">
+        <h5>Add Key notes</h5>
+        <!-- <textarea name="notemaker" id="notemaker" style="width: 100%; height:10rem; border-radius: 8px;resize: none;"></textarea><br> -->
+        <textarea name="notemaker" id="notemaker" style="width: 100%; height:10rem; border-radius: 8px; resize: none;"></textarea><br>
+<button id="downloadTextareaButton" style="margin-top: 1%; background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white; border-radius: 20px; width: 170px; height: 40px;">Download Notes</button>
+      </div>
+      <div class="chatbot" style="margin-top: 10%;">
+        <h4 style="text-align: center; margin: 2%;">"Welcome! Feel free to ask any questions you have right here. We're here to help!"</h4>
+        
+        <div class="box  " style="background-color: white; width: 70rem; height: 34rem; border-radius: 100px;">
+            
+            <input type="text"  id="userInput" style="border: none; background-color: #cfc8c8; opacity: 0.5;width: 60%; text-align:left ;
+            height: 2.5rem; border-radius: 100px; margin-bottom:-10% ; margin-left: 20%; margin-top: 2%; " placeholder="Any question any time " > 
+            
+            <div class="minibox border border-black" style="background-color: rgb(105, 102, 102); border-radius: 100px 0 0 100px; width: 9rem; height: 34rem;  border-radius: 100px 0 0 100px; margin-top: -5%; ">
+              
+                <a href=""><div ><img src="{{ url_for('static', filename='mw.png') }}" alt="" style="width: 25%; height: 25%; margin-top:29% ; margin-left: 34%;"></div></a>
+                <a href=""><div  "><img src="{{ url_for('static', filename='sw.png') }}" alt="" style="   width: 30%; height: 40%;  margin-top:250% ; margin-left: 30%;"></div></a>
+                
+                
+           </div>
+           <div class="messages border border-black"  id="messageContainer" style="height: 74%;width: 75%; margin-left: 18%;margin-left: 17%;margin-top: -40%;">
+
+           </div>
+          
+          
+           <a id="sendButton" type="button" class="btn btn-outline-success" type="submit" style="margin-bottom: 3%;background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white; border-radius: 20px; width: 100px; height: 40px; margin-top: -81%; margin-left: 81%;"><b>Send</b></a>
+        <img src="{{ url_for('static', filename='minirobo.png') }}" alt="" style="width: 10%; height: 25%;  margin-top:-93% ; margin-left: 91%;   ">
+        
+    </div> 
+    
+      </div>
+   
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <script>
+      // Get a reference to the download button
+      const downloadButton = document.getElementById('downloadButton');
+      const userInput = document.getElementById('userInput');
+      const sendButton = document.getElementById('sendButton');
+      const messageContainer = document.getElementById('messageContainer');
+  
+      // Add click event listener to the download button
+      downloadButton.addEventListener('click', function() {
+          // Create a new anchor element
+          const anchor = document.createElement('a');
+          
+          // Set the href attribute to the video source URL
+          anchor.href = "{{ url_for('static', filename='finalvideo.mp4') }}";
+          
+          // Set the download attribute to the filename you want to use
+          anchor.download = "finalvideo.mp4";
+          
+          // Programmatically click the anchor element to trigger the download
+          anchor.click();
+      });
+
+// ----------------------------------------------------------------
+
+    // Get a reference to the textarea and download button
+    const textarea = document.getElementById('notemaker');
+    const downloadTextareaButton = document.getElementById('downloadTextareaButton');
+
+    // // Add click event listener to the download button
+    // downloadTextareaButton.addEventListener('click', function() {
+    //     // Create a new blob object from the textarea content
+    //     const blob = new Blob([textarea.value], { type: 'text/plain' });
+
+    //     // Create a new anchor element
+    //     const anchor = document.createElement('a');
+
+    //     // Set the href attribute to the URL of the blob object
+    //     anchor.href = URL.createObjectURL(blob);
+
+    //     // Set the download attribute to the desired filename
+    //     anchor.download = "notes.txt";
+
+    //     // Programmatically click the anchor element to trigger the download
+    //     anchor.click();
+    // });
+
+
+    // Add click event listener to the download button
+downloadTextareaButton.addEventListener('click', function() {
+    // Use jsPDF to generate a PDF from the textarea content
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Add text from textarea to the PDF
+    doc.text(textarea.value, 10, 10);
+
+    // Save the generated PDF
+    doc.save("notes.pdf");
+});
+
+
+
+    // -------------------------------------helping bot---------------------------------------------
+    
+    function sendMessageToBackend(message) {
+        fetch('/concept_message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            appendMessage(data.message, 'bot');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+
+    // Function to append message to message container
+    function appendMessage(message, sender) {
+        const messageElement = document.createElement('div');
+        messageElement.textContent = message;
+        
+        // Set class based on sender
+        if (sender === 'user') {
+            messageElement.classList.add('user-message');
+        } else {
+            messageElement.classList.add('bot-message');
+        }
+        
+        messageContainer.appendChild(messageElement);
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+        userInput.value = ''; // Clear input field
+        userInput.focus(); // Return focus to input field
+    }
+    
+    sendButton.addEventListener('click', function() {
+        const messageText = userInput.value.trim();
+        if (messageText !== '') {
+            appendMessage(messageText, 'user');
+            sendMessageToBackend(messageText);
+        }
+    });
+
+    userInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            sendButton.click();
+        }
+    });
+
+
+
+
+  </script>
+{% endblock body %}

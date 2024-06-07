@@ -1,0 +1,56 @@
+{% extends "profilebase.html" %}
+{% block title %}Features{% endblock title %}
+
+{% block body %}
+<style>
+    @media (max-width: 768px) {
+    .text-on-image h1 {
+        font-size: 1.5rem;  /* Adjust font size for smaller screens */
+    }
+}
+</style><center>
+
+    <h3 class="display-5" style="padding: 3%; font-weight: 300;"><b>Highlight features </b></h3>
+    <!-- -------------------voice articulate ---------------------------------- -->
+    <center>
+        <div class="voicearticulate mt-5 border border-white" style="background-color: #d9d9d9; border-radius:100px ;  margin-left: 2%; margin-right: 2%; padding-top: 0.3%;">
+        <div class="container border border-white" style="background: linear-gradient(68.66deg, #f2f1f1, #6e6868 52.58%); border-radius: 100px; position: relative;
+        text-align: center;
+        color: white; margin-top: 5%;" >
+            <img src="{{ url_for('static', filename='headset.png') }}" class="img-fluid" alt="concepttolife" style="width: 30%;height: 30%; ;"style="width:100%;">
+        
+            <div class="centered" style=" position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);"><h1   style="font-size: 5rem;white-space: nowrap;"><b>Experience <br>
+Voice Articulate</b></h1></div>
+        
+        </div>
+        <a href="/voicearticulate" type="button" class="btn btn-outline-success m-4" type="submit" style="background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white; border-radius: 20px; width: 200px; height: 40px;"><b><h5>Explore Now</h5></b></a>
+        </div>
+        </div>
+        </center>  
+ <br>
+
+
+<!-- --------------------------------concept to life ---------------------------- -->
+<div class="concepttolife mt-5 pb-4 border border-white" style="background-color: #d9d9d9; border-radius:100px ;  margin-left: 2%; margin-right: 2%; padding-top: 0.3%;">
+    <div class="container border border-white" style="background: linear-gradient(68.66deg, #f2f1f1, #6e6868 52.58%); border-radius: 100px; position: relative;
+    text-align: center;
+    color: white;margin-top: 5%;" >
+        <img src="{{ url_for('static', filename='concepttolife.png') }}" class="img-fluid " alt="concepttolife" style="width: 40%;height: 40%; "style="width:100%;">
+    
+        <div class="centered" style=" position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);"><h1   style="font-size: 5rem;white-space: nowrap;"><b>Visually  <br>
+   Enriched Learning</b></h1></div>
+     
+    </div>
+    <a href="/concepttolife" type="button" class="btn btn-outline-success m-4" type="submit" style="background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white; border-radius: 20px; width: 200px; height: 40px;"><b><h5>Explore Now</h5></b></a></div></center>
+
+
+
+
+
+{% endblock body %}

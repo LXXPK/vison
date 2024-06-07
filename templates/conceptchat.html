@@ -1,0 +1,66 @@
+{% extends "profilebase.html" %}
+{% block title %}conceptchat{% endblock title %}
+{% block body %}
+<style>
+    input{
+        border-radius: 90px;
+        border: none;
+    }
+    
+</style>
+{% if error_message %}
+        <div class="alert " style="background-color: rgb(168, 77, 77);color: white;">{{ error_message }}</div>
+    {% endif %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {%for category, msg in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ msg }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {%endfor%}
+            {% endif %}
+            {% endwith %}
+<center>
+    <div class="generator" style="margin-top: 2%;">
+        <a href="concepttolife">
+            <img src="{{ url_for('static', filename='arrow.png') }}" class="img-fluid" alt="arrow" style="width: 2%;height: 3%; margin-left: -90%;">
+        </a>
+        <h4><b>Bring learning to life with Concept to Life.</b></h4><br>
+        <form method="POST" action="/conceptchat">
+            <div class="inputs">
+                <div  class="container" style="background-color: #cbb; border: 1px solid black; width: 60%; height: 25rem; border-radius: 100px;padding: 5%;">
+                    <h5 style="margin-top: -2%;">Type or speak - it's up to you!</h5><br>
+                    <form action="/conceptchat" method="POST"></form>
+                    <input type="text" id="user_input" name="user_input" placeholder="Anything to be explained ?" style="width: 90%; text-align:left ;height: 2.5rem">
+                    <br>
+                    <h5 style="margin: 3%;"><b >OR</b></h5><br>
+                    <p style="margin: -3%; font-size:large;"><b>Upload your document for a personalized content creation.</b></p><br>
+                    <a href="/conceptvideo" type="button" class="btn btn-outline-success" type="submit" style="background: linear-gradient(90deg, #70998f 30.5%, #253330); border: 1px solid black;color: white; border-radius: 20px; width: 200px; height: 40px; margin-top: 4%;"><b>Upload</b></a>
+                </div>
+                <button type="submit" class="btn btn-outline-success" style="background-color: #8e7fec; background-image: linear-gradient(90deg, #8e7fec, #4939b1 50%, #514886); color: white; border-radius: 20px; width: 150px; height: 40px; margin-top: 4%; margin-bottom: 7%;"><b>Create</b></button>
+            </form>
+            </div>
+        </form>
+    </div>
+</center>
+</div>
+<img src="{{ url_for('static', filename='bag.png') }}" class="img-fluid" alt="bag" style="width: 20%;height: 30%; margin-top: -40%; margin-bottom: 5%; margin-left: 5%;">
+<img src="{{ url_for('static', filename='lapboy.png') }}" class="img-fluid" alt="bag" style="width: 30%;height: 40%;  margin-top: -20%; margin-bottom: 5%; margin-left: 70%;">
+<a  type="button" id="microphone" ><img src="{{ url_for('static', filename='microphone.png') }}" class="img-fluid" alt="microphone" style="width: 2.5%;height: 3.6%;   margin-top: -34.2%; margin-bottom: 33.8%; margin-left: 68.9%;"></a>
+<a href="/conceptvideo"><img src="{{ url_for('static', filename='upload.png') }}" class="img-fluid" alt="microphone" style="width: 2.5%;height: 3.6%;   margin-top: -28.2%; margin-bottom: 20%; margin-left: 43.5%;"></a>
+<script>
+    document.getElementById("microphone").addEventListener("click", function() {
+    fetch('/start-speech-recognition')
+    .then(response => response.text())
+    .then(data => {
+        // Update the input field value with the recognized text
+        document.getElementById("user_input").value = data;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+</script>
+{% endblock body %}
