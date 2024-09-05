@@ -13,7 +13,7 @@ from moviepy.editor import *
 from PIL import Image
 import io
 
-genai.configure(api_key="AIzaSyANF58fvFynlOZM1DzXpWoUmin6UV99mcI")
+genai.configure(api_key="")
 
 # Set up the model
 generation_config = {
