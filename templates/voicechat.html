@@ -79,7 +79,11 @@
         <h5 style="font-size: 350;"><b>Quiz Mode</b></h5>
         <button class="toggle-button" style=" border-radius: 100px;">Quiz Mode</button><br><br>
         <h6 style="margin-top: 1%;">Upload your document for a personalized explanation.</h6><br>
-        <a href="/upload" type="button" class="btn btn-outline-success" type="submit" style="background: linear-gradient(90deg, #70998f 30.5%, #253330); border: 1px solid black;color: white; border-radius: 20px; width: 200px; height: 40px; ;"><b>Upload</b></a>
+        <!-- <a href="/upload" type="button" class="btn btn-outline-success" type="submit" style="background: linear-gradient(90deg, #70998f 30.5%, #253330); border: 1px solid black;color: white; border-radius: 20px; width: 200px; height: 40px; ;"><b>Upload</b></a> -->
+        <label class="btn btn-outline-success" style="background: linear-gradient(90deg, #70998f 30.5%, #253330); border: 1px solid black;color: white; border-radius: 20px; width: 200px; height: 40px; ">
+            <input type="file" style="display: none;" />
+            Upload
+        </label>
         <br><img src="{{ url_for('static', filename='upload.png') }}" class="img-fluid" alt="microphone" style="width: 2.5%;height: 3.6%; margin-top: -29.2%; margin-bottom:-24%; margin-right: 10%;">
         
     </div>

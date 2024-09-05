@@ -131,7 +131,7 @@ def logout():
 # def send_message():
 #     user_input = request.json['message']
     
-#     genai.configure(api_key="AIzaSyCKKEPd0i7DqP-nd3yvBWeEHBpO3OHkppA")
+#     genai.configure(api_key="")
 #     # Get conversation history
 #     conversation_history = convo.history
 
@@ -206,8 +206,8 @@ def send_message():
     conversation_history.append({"role": "user", "parts": [user_input]})
     
     # Configure the AI assistant
-    # genai.configure(api_key="AIzaSyCKKEPd0i7DqP-nd3yvBWeEHBpO3OHkppA")
-    genai.configure(api_key="AIzaSyDrgdRG6s55riY4_d2ARznFkOrbnFmMFZI")
+    # genai.configure(api_key="")
+    genai.configure(api_key="")
     
     # Set up the model
     generation_config = {
@@ -368,7 +368,7 @@ def conceptchat():
     if request.method == 'POST':
         user_input = request.form['user_input']
         
-        genai.configure(api_key="AIzaSyDrgdRG6s55riY4_d2ARznFkOrbnFmMFZI")
+        genai.configure(api_key="")
 
         # Set up the model
         generation_config = {
@@ -423,7 +423,7 @@ def conceptchat():
 
             
             API_URL = "https://api-inference.huggingface.co/models/goofyai/3d_render_style_xl"
-            headers = {"Authorization": "Bearer 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"}
+            headers = {"Authorization": "Bearer "}
             cleanup_previous_files(exclude_final_video=True)
 
             
@@ -542,7 +542,7 @@ def concept_message():
     conversation_history.append({"role": "user", "parts": [user_input]})
     
     
-    genai.configure(api_key="AIzaSyDrgdRG6s55riY4_d2ARznFkOrbnFmMFZI")
+    genai.configure(api_key="")
 
     # Set up the model
     generation_config = {
@@ -616,7 +616,7 @@ def contactus():
 def generate_response():
     user_input = request.json.get('message')
     # Configure the AI assistant
-    genai.configure(api_key="AIzaSyDrgdRG6s55riY4_d2ARznFkOrbnFmMFZI")
+    genai.configure(api_key="")
     
     # Set up the model
     generation_config = {
